@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../custom_widget/custom_button.dart';
-import '../custom_widget/custom_text_field.dart';
-import '../custom_widget/gradient_background.dart';
+import '../../custom_widget/custom_button.dart';
+import '../../custom_widget/custom_text_field.dart';
+import '../../custom_widget/gradient_background.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -17,7 +17,8 @@ class _LandlordRegistrationScreenState extends State<RegistrationScreen>
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController ConfirmpasswordController = TextEditingController();
+  final TextEditingController ConfirmpasswordController =
+      TextEditingController();
 
   late AnimationController _controller;
   late Animation<double> _fadeInAnimation;
@@ -30,9 +31,10 @@ class _LandlordRegistrationScreenState extends State<RegistrationScreen>
       vsync: this,
     )..forward();
 
-    _fadeInAnimation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
+    _fadeInAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
   }
 
   @override
@@ -55,14 +57,14 @@ class _LandlordRegistrationScreenState extends State<RegistrationScreen>
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.white.withOpacity(0.15),
-                Colors.white.withOpacity(0.05),
+                Color.fromRGBO(255, 255, 255, 0.15),
+                Color.fromRGBO(255, 255, 255, 0.5),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
             border: Border(
-              bottom: BorderSide(color: Colors.white.withOpacity(0.2)),
+              bottom: BorderSide(color: Color.fromRGBO(255, 255, 255, 0.2)),
             ),
           ),
           child: AppBar(
@@ -97,19 +99,23 @@ class _LandlordRegistrationScreenState extends State<RegistrationScreen>
             child: FadeTransition(
               opacity: _fadeInAnimation,
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 16,
+                ),
                 child: Column(
                   children: [
-
                     Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
+                        color: Color.fromRGBO(255, 255, 255, 0.1),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: Colors.white.withOpacity(0.3)),
+                        border: Border.all(
+                          color: Color.fromRGBO(255, 255, 255, 0.3),
+                        ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Color.fromRGBO(0, 0, 0, 0.2),
                             blurRadius: 10,
                             spreadRadius: 2,
                           ),

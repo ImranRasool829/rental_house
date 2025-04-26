@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rental_house_land_app/screens/forget_password_screen.dart';
-import 'package:rental_house_land_app/screens/registration.dart';
-import 'package:rental_house_land_app/screens/user_profile_screen.dart';
-
+import 'package:rental_house_land_app/screens/auth/forget_password.dart';
+import 'package:rental_house_land_app/screens/auth/registration.dart';
+import 'package:rental_house_land_app/screens/setting/profile.dart';
 import 'custom_widget/custom_button.dart';
 import 'custom_widget/custom_text.dart';
 import 'custom_widget/custom_text_button.dart';
@@ -67,117 +66,154 @@ class _LoginScreenState extends State<LoginScreen>
       body: Stack(
         children: [
           const GradientBackground(child: SizedBox.expand()),
-          SafeArea(child: FadeTransition(opacity: _fadeInAnimation,
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-
-                  SizedBox(height: 40,),
-                  // Glassmorphism Login Box
-                  Center(
-                    child: FadeTransition(
-                      opacity: _fadeInAnimation,
-                      child: Container(
-                        padding: const EdgeInsets.all(24),
-                        width: 360,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.white.withOpacity(0.3)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              blurRadius: 15,
-                              spreadRadius: 3,
+          SafeArea(
+            child: FadeTransition(
+              opacity: _fadeInAnimation,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 16,
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 40),
+                    // Glassmorphism Login Box
+                    Center(
+                      child: FadeTransition(
+                        opacity: _fadeInAnimation,
+                        child: Container(
+                          padding: const EdgeInsets.all(24),
+                          width: 360,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(255, 255, 255, 0.2),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: Color.fromRGBO(255, 255, 255, 0.3),
                             ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            // App Logo (House Icon)
-                            const CircleAvatar(
-                              radius: 45,
-                              backgroundColor: Colors.white24,
-                              child: Icon(Icons.home, color: Colors.white, size: 50),
-                            ),
-                            const SizedBox(height: 20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromRGBO(0, 0, 0, 0.3),
+                                blurRadius: 15,
+                                spreadRadius: 3,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              // App Logo (House Icon)
+                              const CircleAvatar(
+                                radius: 45,
+                                backgroundColor: Colors.white24,
+                                child: Icon(
+                                  Icons.home,
+                                  color: Colors.white,
+                                  size: 50,
+                                ),
+                              ),
+                              const SizedBox(height: 20),
 
-                            CustomTextWidget(
-                              text: "Welcome to Home!",
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+                              CustomTextWidget(
+                                text: "Welcome to Home!",
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
 
-                            const SizedBox(height: 15),
+                              const SizedBox(height: 15),
 
-                            CustomTextField(
-                              controller: emailController,
-                              label: "Email",
-                              icon: Icons.email_outlined,
-                            ),
+                              CustomTextField(
+                                controller: emailController,
+                                label: "Email",
+                                icon: Icons.email_outlined,
+                              ),
 
-                            const SizedBox(height: 15),
+                              const SizedBox(height: 15),
 
-                            CustomTextField(
-                              controller: passwordController,
-                              label: "Password",
-                              icon: Icons.lock_outline,
-                              isPassword: true,
-                            ),
+                              CustomTextField(
+                                controller: passwordController,
+                                label: "Password",
+                                icon: Icons.lock_outline,
+                                isPassword: true,
+                              ),
 
-                            const SizedBox(height: 10),
+                              CustomTextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const ForgotPasswordScreen(),
+                                    ),
+                                  );
+                                },
+                                text: "Forgot Password?",
+                              ),
 
-                            CustomTextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const ForgotPasswordScreen(),
-                                  ),
-                                );
-                              },
-                            ),
+                              const SizedBox(height: 16),
 
-                            const SizedBox(height: 10),
+                              CustomButton(
+                                text: "Login",
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => const ProfileScreen(),
+                                    ),
+                                  );
+                                },
+                                backgroundColor: Color.fromRGBO(
+                                  255,
+                                  215,
+                                  64,
+                                  0.7,
+                                ),
+                                textColor: Colors.white,
+                                fontSize: 16,
+                                borderRadius: 12,
+                              ),
 
-                            CustomButton(
-                              text: "Login",
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const RegistrationScreen(),
-                                  ),
-                                );
-                              },
-                              backgroundColor: Colors.amberAccent.withOpacity(0.7),
-                              textColor: Colors.white,
-                              fontSize: 16,
-                              borderRadius: 12,
-                            ),
-
-                            const SizedBox(height: 15),
-                          ],
+                              const SizedBox(height: 15),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-
-                ],
+                  ],
+                ),
               ),
-
             ),
-
-
-          )
-
-
           ),
 
-
+          Positioned(
+            bottom: 32,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CustomTextWidget(
+                  text: 'New User?',
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                CustomTextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegistrationScreen(),
+                      ),
+                    );
+                  },
+                  text: "Register",
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

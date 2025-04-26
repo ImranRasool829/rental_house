@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final String text;
 
-  const CustomTextButton({super.key, required this.onPressed});
+  const CustomTextButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +16,9 @@ class CustomTextButton extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: TextButton(
         onPressed: onPressed,
-        child: const Text(
-          "Forgot Password?",
-          style: TextStyle(color: Colors.white),
+        child: Text(
+          text,
+          style: const TextStyle(color: Colors.white, fontSize:14,fontWeight: FontWeight.bold),
         ),
       ),
     );
