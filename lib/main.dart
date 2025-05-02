@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rental_house_land_app/screens/auth/forget_password.dart';
 import 'package:rental_house_land_app/screens/auth/registration.dart';
-import 'package:rental_house_land_app/screens/setting/profile.dart';
+import 'package:rental_house_land_app/screens/home/home.dart';
 import 'custom_widget/custom_button.dart';
 import 'custom_widget/custom_text.dart';
 import 'custom_widget/custom_text_button.dart';
@@ -159,8 +159,7 @@ class _LoginScreenState extends State<LoginScreen>
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder:
-                                          (context) => const ProfileScreen(),
+                                      builder: (context) => const HomeScreen(),
                                     ),
                                   );
                                 },
