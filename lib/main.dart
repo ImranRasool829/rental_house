@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rental_house_land_app/screens/auth/forget_password.dart';
-import 'package:rental_house_land_app/screens/auth/registration.dart';
-import 'package:rental_house_land_app/screens/home/home.dart';
+import 'package:go_router/go_router.dart';
+import 'app_router.dart';
 import 'custom_widget/custom_button.dart';
 import 'custom_widget/custom_text.dart';
 import 'custom_widget/custom_text_button.dart';
@@ -17,9 +16,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
+      title: 'Flutter Navigation Demo',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
     );
   }
 }
@@ -139,14 +140,7 @@ class _LoginScreenState extends State<LoginScreen>
 
                               CustomTextButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder:
-                                          (context) =>
-                                              const ForgotPasswordScreen(),
-                                    ),
-                                  );
+                                  context.push('/forget_password');
                                 },
                                 text: "Forgot Password?",
                               ),
@@ -156,12 +150,7 @@ class _LoginScreenState extends State<LoginScreen>
                               CustomButton(
                                 text: "Login",
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const HomeScreen(),
-                                    ),
-                                  );
+                                  context.go('/dashboard');
                                 },
                                 backgroundColor: Color.fromRGBO(
                                   255,
@@ -201,12 +190,7 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
                 CustomTextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RegistrationScreen(),
-                      ),
-                    );
+                    context.push('/registration');
                   },
                   text: "Register",
                 ),

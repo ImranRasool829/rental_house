@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rental_house_land_app/screens/dashboard/ai_powered_dashboard.dart';
+import 'package:rental_house_land_app/screens/dashboard/property.dart';
+import 'package:rental_house_land_app/screens/dashboard/service.dart';
 import '../../custom_widget/gradient_background.dart';
-import '../setting/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +13,9 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+//Back: Ctrl + Cmd + Left Arrow
+//Forward: Ctrl + Cmd + Right Arrow
+
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
@@ -17,9 +23,9 @@ class _HomeScreenState extends State<HomeScreen>
   late Animation<double> _fadeInAnimation;
 
   final List<Widget> _screens = [
-    DashboardScreen(),
-    ProfileScreen(),
+    AIPoweredDashboardScreen(),
     PropertyScreen(),
+    ServiceScreen(),
   ];
 
   @override
@@ -80,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen>
               ),
               onTap: () {
                 Navigator.pop(context);
-                _onItemTapped(0);
+              //  _onItemTapped(0);
               },
             ),
             ListTile(
@@ -91,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen>
               ),
               onTap: () {
                 Navigator.pop(context);
-                _onItemTapped(1);
+                context.push('/profile');
               },
             ),
             ListTile(
@@ -102,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen>
               ),
               onTap: () {
                 Navigator.pop(context);
-                _onItemTapped(2);
+               // _onItemTapped(2);
               },
             ),
           ],
@@ -178,13 +184,16 @@ class _HomeScreenState extends State<HomeScreen>
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard),
-              label: 'Dashboard',
+              icon: Icon(Icons.maps_home_work),
+              label: 'dashboard',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_work_outlined),
-              label: 'Property',
+              icon: Icon(Icons.store),
+              label: 'Marketplace',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_repair_service_outlined),
+              label: 'Service',
             ),
           ],
         ),
@@ -193,33 +202,5 @@ class _HomeScreenState extends State<HomeScreen>
   }
 }
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          'Dashboard Screen',
-          style: GoogleFonts.poppins(color: Colors.white, fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
 
-class PropertyScreen extends StatelessWidget {
-  const PropertyScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Property Screen',
-        style: GoogleFonts.poppins(color: Colors.white, fontSize: 24),
-      ),
-    );
-  }
-}
